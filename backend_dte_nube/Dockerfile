@@ -1,7 +1,8 @@
-# Usamos una versión ligera de Python
-FROM python:3.9-slim
+# Usamos una versión específica de Debian (Bookworm) para mayor estabilidad
+FROM python:3.9-slim-bookworm
 
-# 1. Instalar dependencias de sistema (GTK y gráficos para Linux)
+# 1. Instalar dependencias de sistema
+# Hemos corregido el nombre de libgdk-pixbuf-2.0-0
 RUN apt-get update && apt-get install -y \
     build-essential \
     python3-dev \
@@ -12,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     libcairo2 \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \
-    libgdk-pixbuf2.0-0 \
+    libgdk-pixbuf-2.0-0 \
     libffi-dev \
     shared-mime-info \
     && apt-get clean \
@@ -30,5 +31,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 5. Exponer el puerto
 EXPOSE 10000
 
-# 6. Comando de inicio (Gunicorn es un servidor profesional)
+# 6. Comando de inicio
 CMD ["gunicorn", "--bind", "0.0.0.0:10000", "app:app"]
