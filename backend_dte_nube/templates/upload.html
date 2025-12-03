@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generador de DTE a PDF</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f4; }
+        .card { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        button { background: #0056b3; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Subir DTE (JSON)</h2>
+        <form action="/generar-pdf" method="post" enctype="multipart/form-data">
+            <input type="file" name="json_file" accept=".json" required>
+            <br><br>
+            <button type="submit">Convertir a PDF</button>
+        </form>
+    </div>
+</body>
+</html>

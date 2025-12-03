@@ -1,0 +1,5 @@
+Flask
+weasyprint
+qrcode[pil]
+flask-cors
+gunicorn
